@@ -1,1 +1,15 @@
 @import "../node_modules/bootstrap/scss/bootstrap.scss";
+
+.container img{
+    z-index: -1;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
+}
+
+.rounded{
+    margin-top: 6em;
+    height: 40vh;
+    width: 55vw;
+    box-sizing: content-box;
+}
