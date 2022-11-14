@@ -4,6 +4,7 @@
 const URL1: string = "https://icanhazdadjoke.com/";
 const joke: any = document.getElementById('joke');
 const displayScore: any = document.getElementById('score');
+const tiempo = document.getElementById('tiempo');
 const reportJokes: any[] = [];
 let encuesta: boolean = false;
 let value: string ;
@@ -29,13 +30,12 @@ document.getElementById("nextJoke")?.addEventListener("click", ()=>{
 //EJERCICIO 2
 const mostrarChiste = (chiste: string) => {
     joke!.innerHTML = `"${chiste}"`;
-    // displayScore.setAttribute ('class','d-block');
     mostrarEncuesta('d-block');
     valorEncuesta();
 }
 
 //EJERCICIO 3
-function reporte(){
+function reporte(this: any){
     if(encuesta){
         const puntos:number = Number(this.getAttribute('id'));
         const fecha: any = new Date();    
@@ -54,10 +54,23 @@ function reporte(){
 
 const borrar = () =>{
     joke.innerHTML = "";
-    // displayScore.setAttribute ('class','d-none');
     mostrarEncuesta('d-none');
 }
 
 const mostrarEncuesta = (valor:string) => displayScore.setAttribute('class',valor);
 
 const valorEncuesta = () => encuesta = !encuesta;
+
+// EJERCICIO 4
+window.addEventListener("load", ()=>{
+    let ciudad: string = 'Barcelona';
+    const URL: string = `https://api.openweathermap.org/data/2.5/weather?q=${ciudad}&appid=0d0a35ab5ca447a9fc9e469982a393de&units=metric&lang=es`;
+
+    fetch(URL)
+        .then(result => result.json())
+        .then(data => {
+            let temperatura = data.main.temp;
+            let descripcion = data.weather[0].description;
+            tiempo!.innerHTML = `${descripcion} | ${Math.floor(temperatura)} º`;
+    })
+});
