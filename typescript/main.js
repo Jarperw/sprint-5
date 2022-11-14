@@ -1,7 +1,8 @@
 "use strict";
 var _a;
-//varibales globales
+//VARIABLES GLOBALES
 var URL1 = "https://icanhazdadjoke.com/";
+var URL2 = "https://api.chucknorris.io/jokes/random";
 var joke = document.getElementById('joke');
 var displayScore = document.getElementById('score');
 var tiempo = document.getElementById('tiempo');
@@ -12,14 +13,22 @@ var value;
 document.getElementById('1').onclick = reporte;
 document.getElementById('2').onclick = reporte;
 document.getElementById('3').onclick = reporte;
-//EJERCICIO 1
+//EJERCICIO 1 (EJERCICIO 5)
 (_a = document.getElementById("nextJoke")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
     if (!encuesta) {
-        fetch(URL1, { headers: { "Accept": "application/json" } })
+        var urls = [URL1, URL2];
+        var num_1 = Math.floor(Math.random() * urls.length);
+        fetch(urls[num_1], { headers: { "Accept": "application/json" } })
             .then(function (resp) { return resp.json(); })
             .then(function (chiste) {
-            value = chiste.joke;
-            mostrarChiste(chiste.joke);
+            if (num_1 == 0) {
+                value = chiste.joke;
+                return mostrarChiste(chiste.joke);
+            }
+            else {
+                value = chiste.value;
+                return mostrarChiste(chiste.value);
+            }
         });
     }
 });
@@ -39,6 +48,7 @@ function reporte() {
             score: puntos,
             date: fecha.toISOString()
         });
+        console.clear();
         console.log('reporte:', reportJokes);
         valorEncuesta();
         borrar();
