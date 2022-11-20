@@ -3,63 +3,69 @@ var _a;
 //VARIABLES GLOBALES
 var URL1 = "https://icanhazdadjoke.com/";
 var URL2 = "https://api.chucknorris.io/jokes/random";
-var joke = document.getElementById('joke');
-var displayScore = document.getElementById('score');
-var tiempo = document.getElementById('tiempo');
 var reportJokes = [];
 var encuesta = false;
 var value;
+var puntos;
+var fecha;
+var joke = document.getElementById('joke');
+var displayScore = document.getElementById('score');
+var tiempo = document.getElementById('tiempo');
 // eventos
 document.getElementById('1').onclick = reporte;
 document.getElementById('2').onclick = reporte;
 document.getElementById('3').onclick = reporte;
 //EJERCICIO 1 (EJERCICIO 5)
 (_a = document.getElementById("nextJoke")) === null || _a === void 0 ? void 0 : _a.addEventListener("click", function () {
-    if (!encuesta) {
-        var urls = [URL1, URL2];
-        var num_1 = Math.floor(Math.random() * urls.length);
-        fetch(urls[num_1], { headers: { "Accept": "application/json" } })
-            .then(function (resp) { return resp.json(); })
-            .then(function (chiste) {
-            if (num_1 == 0) {
-                value = chiste.joke;
-                return mostrarChiste(chiste.joke);
-            }
-            else {
-                value = chiste.value;
-                return mostrarChiste(chiste.value);
-            }
-        });
-    }
+    var urls = [URL1, URL2];
+    var num = random(urls);
+    //modificacion del ejercicio 3
+    if (encuesta)
+        arrayReporte(puntos, fecha.toISOString());
+    fetch(urls[num], { headers: { "Accept": "application/json" } })
+        .then(function (resp) { return resp.json(); })
+        .then(function (chiste) {
+        if (num == 0) {
+            value = chiste.joke;
+            return mostrarChiste(chiste.joke);
+        }
+        else {
+            value = chiste.value;
+            return mostrarChiste(chiste.value);
+        }
+    });
 });
 //EJERCICIO 2
 var mostrarChiste = function (chiste) {
     joke.innerHTML = "\"".concat(chiste, "\"");
-    mostrarEncuesta('d-block');
-    valorEncuesta();
+    displayScore.setAttribute('class', 'd-block');
 };
 //EJERCICIO 3
 function reporte() {
-    if (encuesta) {
-        var puntos = Number(this.getAttribute('id'));
-        var fecha = new Date();
+    puntos = Number(this.getAttribute('id'));
+    fecha = new Date();
+    encuesta = true;
+}
+var arrayReporte = function (score, date) {
+    var encontrado = false;
+    var resp;
+    // para no duplicar chiste se suma score y se añade fecha de ultima valoracion
+    if (resp = reportJokes.find(function (valor) { return valor.joke == value; })) {
+        resp.score += score;
+        resp.date = date;
+        encontrado = true;
+    }
+    if (!encontrado) {
         reportJokes.push({
             joke: value,
-            score: puntos,
-            date: fecha.toISOString()
+            score: score,
+            date: date
         });
-        console.clear();
-        console.log('reporte:', reportJokes);
-        valorEncuesta();
-        borrar();
     }
-}
-var borrar = function () {
-    joke.innerHTML = "";
-    mostrarEncuesta('d-none');
+    console.clear();
+    console.log('reporte:', reportJokes);
+    encuesta = false;
 };
-var mostrarEncuesta = function (valor) { return displayScore.setAttribute('class', valor); };
-var valorEncuesta = function () { return encuesta = !encuesta; };
 // EJERCICIO 4
 window.addEventListener("load", function () {
     var ciudad = 'Barcelona';
@@ -72,3 +78,6 @@ window.addEventListener("load", function () {
         tiempo.innerHTML = "".concat(descripcion, " | ").concat(Math.floor(temperatura), " \u00BA");
     });
 });
+var random = function (array) {
+    return Math.floor(Math.random() * array.length);
+};
