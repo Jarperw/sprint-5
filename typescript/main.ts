@@ -12,6 +12,9 @@ let fecha: any;
 const joke: any = document.getElementById('joke');
 const displayScore: any = document.getElementById('score');
 const tiempo = document.getElementById('tiempo');
+const fondo = document.getElementById("fondo");
+const fondoIzquierda = document.getElementById("fondoIzquierda");
+const fondoDerecha = document.getElementById("fondoDerecha");
 
 // eventos
 document.getElementById('1')!.onclick = reporte;
@@ -38,6 +41,7 @@ document.getElementById("nextJoke")?.addEventListener("click", () => {
                 return mostrarChiste(chiste.value);
             }
         })
+    fondoPantalla();
 })
 
 //EJERCICIO 2
@@ -84,12 +88,29 @@ window.addEventListener("load", () => {
     fetch(URL)
         .then(result => result.json())
         .then(data => {
-            let temperatura = data.main.temp;
-            let descripcion = data.weather[0].description;
-            tiempo!.innerHTML = `${descripcion} | ${Math.floor(temperatura)} º`;
+            let temperatura: any = data.main.temp;
+            let icono: any = data.weather[0].icon;
+            tiempo!.innerHTML = `<img src="./img/svg/${icono}.svg" class="w-75"> | ${Math.floor(temperatura)} ºC`;
         })
+
+    fondoPantalla();
 });
 
 const random = (array: string[] ) => {
     return Math.floor(Math.random() * array.length)
+}
+
+//ejercicio 6
+const fondoPantalla = () => {
+    const fondos: string[] = ["fondo1", "fondo2", "fondo3", "fondo4", "fondo5", "fondo6"];
+    const mBlack: string[] = ["black", "none"];
+    let num: number = random(fondos);
+    let num2: number = random(mBlack);
+
+    fondo?.setAttribute('src', `./img/fondos/${fondos[num]}.svg`);
+    fondoIzquierda?.setAttribute('src', `./img/fondos/izquierda/${fondos[num]}.svg`);
+    fondoDerecha?.setAttribute('src', `./img/fondos/derecha/${fondos[num]}.svg`);
+
+    document.querySelector("body")?.setAttribute("id", `${mBlack[num2]}`);
+    document.querySelector(".navbar")?.setAttribute("id", `${mBlack[num2]}`);
 }

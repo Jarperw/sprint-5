@@ -12,19 +12,19 @@
 </head>
 <body>
     <nav class="navbar navbar-light bg-white">
-        <div class="container-fluid">
-          <a id="tiempo" class="navbar-brand ms-3 mt-2" href="#"></a>
+        <div class="container-fluid justify-content-center justify-content-md-start">
+          <a id="tiempo" class="navbar-brand ms-3 mt-2 fs-4 top-0" href="#"></a>
         </div>
     </nav>
-    <div class="container">
-        <img src="img/fondo.jpg" class="w-100 h-100 position-absolute">
-        <div class="row my-5">
-            <div class="col-7 d-flex flex-column align-items-center justify-content-between p-5 ms-auto me-auto bg-white rounded rounded-3 shadow-lg">
+    <div class="container position-relative">
+        <img id="fondo" src="" class="position-absolute">
+        <div class="row mt-5 cajaChiste">
+            <div class="chiste d-flex flex-column align-items-center text-white ms-auto me-auto">
                 <div>
-                    <h4>¿Preparado para reir?🤣</h4>
+                    <h1 class="">¿Preparado para reir?</h1>
                 </div>
                 <div>
-                    <p id="joke"> </p>
+                    <h4 id="joke" class=""> </h4>
                 </div>
                 <div id="score" class="d-none">
                     <a id="1" class="navbar-brand m-2" href="#">😓</a>
@@ -32,10 +32,12 @@
                     <a id="3" class="navbar-brand m-2" href="#">😆</a>
                 </div>
                 <div>
-                    <button id="nextJoke" class="btn btn-primary d-inline">Siguiente chiste</button>
+                    <button id="nextJoke" class="btn btn-warning d-inline rounded rounded-pill border border-2 border-dark">Siguiente chiste</button>
                 </div>
             </div>
         </div>
     </div>
+    <img id="fondoDerecha" src="" class="position-absolute">
+    <img id="fondoIzquierda" src="" class="position-relative">
 </body>
 </html>

@@ -11,6 +11,9 @@ var fecha;
 var joke = document.getElementById('joke');
 var displayScore = document.getElementById('score');
 var tiempo = document.getElementById('tiempo');
+var fondo = document.getElementById("fondo");
+var fondoIzquierda = document.getElementById("fondoIzquierda");
+var fondoDerecha = document.getElementById("fondoDerecha");
 // eventos
 document.getElementById('1').onclick = reporte;
 document.getElementById('2').onclick = reporte;
@@ -34,6 +37,7 @@ document.getElementById('3').onclick = reporte;
             return mostrarChiste(chiste.value);
         }
     });
+    fondoPantalla();
 });
 //EJERCICIO 2
 var mostrarChiste = function (chiste) {
@@ -74,10 +78,24 @@ window.addEventListener("load", function () {
         .then(function (result) { return result.json(); })
         .then(function (data) {
         var temperatura = data.main.temp;
-        var descripcion = data.weather[0].description;
-        tiempo.innerHTML = "".concat(descripcion, " | ").concat(Math.floor(temperatura), " \u00BA");
+        var icono = data.weather[0].icon;
+        tiempo.innerHTML = "<img src=\"./img/svg/".concat(icono, ".svg\" class=\"w-75\"> | ").concat(Math.floor(temperatura), " \u00BAC");
     });
+    fondoPantalla();
 });
 var random = function (array) {
     return Math.floor(Math.random() * array.length);
+};
+//ejercicio 6
+var fondoPantalla = function () {
+    var _a, _b;
+    var fondos = ["fondo1", "fondo2", "fondo3", "fondo4", "fondo5", "fondo6"];
+    var mBlack = ["black", "none"];
+    var num = random(fondos);
+    var num2 = random(mBlack);
+    fondo === null || fondo === void 0 ? void 0 : fondo.setAttribute('src', "./img/fondos/".concat(fondos[num], ".svg"));
+    fondoIzquierda === null || fondoIzquierda === void 0 ? void 0 : fondoIzquierda.setAttribute('src', "./img/fondos/izquierda/".concat(fondos[num], ".svg"));
+    fondoDerecha === null || fondoDerecha === void 0 ? void 0 : fondoDerecha.setAttribute('src', "./img/fondos/derecha/".concat(fondos[num], ".svg"));
+    (_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.setAttribute("id", "".concat(mBlack[num2]));
+    (_b = document.querySelector(".navbar")) === null || _b === void 0 ? void 0 : _b.setAttribute("id", "".concat(mBlack[num2]));
 };
