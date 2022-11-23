@@ -105,12 +105,12 @@ const fondoPantalla = () => {
     const fondos: string[] = ["fondo1", "fondo2", "fondo3", "fondo4", "fondo5", "fondo6"];
     const mBlack: string[] = ["black", "none"];
     let num: number = random(fondos);
-    let num2: number = random(mBlack);
+    // let num2: number = random(mBlack);
 
     fondo?.setAttribute('src', `./img/fondos/${fondos[num]}.svg`);
     fondoIzquierda?.setAttribute('src', `./img/fondos/izquierda/${fondos[num]}.svg`);
     fondoDerecha?.setAttribute('src', `./img/fondos/derecha/${fondos[num]}.svg`);
 
-    document.querySelector("body")?.setAttribute("id", `${mBlack[num2]}`);
-    document.querySelector(".navbar")?.setAttribute("id", `${mBlack[num2]}`);
+    // document.querySelector("body")?.setAttribute("id", `${mBlack[num2]}`);
+    // document.querySelector(".navbar")?.setAttribute("id", `${mBlack[num2]}`);
 }

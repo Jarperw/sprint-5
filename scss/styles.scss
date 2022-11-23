@@ -22,6 +22,13 @@ nav a:hover {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    animation-name: mancha;
+    animation-duration: 4s;
+}
+
+@keyframes mancha {
+    from {top:10%}
+    to {top: 50%;}
 }
 
 #fondoIzquierda {
@@ -66,6 +73,11 @@ nav a:hover {
         top: 60%;
     }
 
+    @keyframes mancha {
+        from {top:10%}
+        to {top: 60%;}
+    }
+
     #fondoIzquierda {
         top: 6em;
     }
@@ -80,6 +92,13 @@ nav a:hover {
     #fondo {
         width: 88vw;
         top: 80%;
+        animation: mancha;
+        animation-duration: 4s;
+    }
+
+    @keyframes mancha {
+        from {top:10%}
+        to {top: 80%;}
     }
 
     #fondoIzquierda {
@@ -124,6 +143,11 @@ nav a:hover {
         top: 92%;
     }
 
+    @keyframes mancha {
+        from {top:10%}
+        to {top: 92%;}
+    }
+
     #fondoIzquierda {
         top: 16em;
     }
@@ -163,6 +187,12 @@ nav a:hover {
 
     #fondo {
         top: 116%;
+        
+    }
+
+    @keyframes mancha {
+        from {left: 35%; top:50%;}
+        to {left: 50%; top:116%}
     }
 
     #fondoIzquierda {
@@ -223,6 +253,11 @@ nav a:hover {
     #fondo {
         width: 100vw;
         top: 118%;
+    }
+
+    @keyframes mancha {
+        from {left: 35%; top:50%;}
+        to {left: 50%; top:118%}
     }
 
     #fondoIzquierda {

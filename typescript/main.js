@@ -88,14 +88,13 @@ var random = function (array) {
 };
 //ejercicio 6
 var fondoPantalla = function () {
-    var _a, _b;
     var fondos = ["fondo1", "fondo2", "fondo3", "fondo4", "fondo5", "fondo6"];
     var mBlack = ["black", "none"];
     var num = random(fondos);
-    var num2 = random(mBlack);
+    // let num2: number = random(mBlack);
     fondo === null || fondo === void 0 ? void 0 : fondo.setAttribute('src', "./img/fondos/".concat(fondos[num], ".svg"));
     fondoIzquierda === null || fondoIzquierda === void 0 ? void 0 : fondoIzquierda.setAttribute('src', "./img/fondos/izquierda/".concat(fondos[num], ".svg"));
     fondoDerecha === null || fondoDerecha === void 0 ? void 0 : fondoDerecha.setAttribute('src', "./img/fondos/derecha/".concat(fondos[num], ".svg"));
-    (_a = document.querySelector("body")) === null || _a === void 0 ? void 0 : _a.setAttribute("id", "".concat(mBlack[num2]));
-    (_b = document.querySelector(".navbar")) === null || _b === void 0 ? void 0 : _b.setAttribute("id", "".concat(mBlack[num2]));
+    // document.querySelector("body")?.setAttribute("id", `${mBlack[num2]}`);
+    // document.querySelector(".navbar")?.setAttribute("id", `${mBlack[num2]}`);
 };

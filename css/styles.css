@@ -10956,8 +10956,29 @@ nav a:hover {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -webkit-animation-name: mancha;
+          animation-name: mancha;
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
 }
 
+@-webkit-keyframes mancha {
+  from {
+    top: 10%;
+  }
+  to {
+    top: 50%;
+  }
+}
+
+@keyframes mancha {
+  from {
+    top: 10%;
+  }
+  to {
+    top: 50%;
+  }
+}
 #fondoIzquierda {
   bottom: 3em;
   left: 5em;
@@ -10995,6 +11016,22 @@ nav a:hover {
     width: 78vw;
     top: 60%;
   }
+  @-webkit-keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 60%;
+    }
+  }
+  @keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 60%;
+    }
+  }
   #fondoIzquierda {
     top: 6em;
   }
@@ -11006,6 +11043,26 @@ nav a:hover {
   #fondo {
     width: 88vw;
     top: 80%;
+    -webkit-animation: mancha;
+            animation: mancha;
+    -webkit-animation-duration: 4s;
+            animation-duration: 4s;
+  }
+  @-webkit-keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 80%;
+    }
+  }
+  @keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 80%;
+    }
   }
   #fondoIzquierda {
     top: 10em;
@@ -11039,6 +11096,22 @@ nav a:hover {
     width: 100vw;
     top: 92%;
   }
+  @-webkit-keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 92%;
+    }
+  }
+  @keyframes mancha {
+    from {
+      top: 10%;
+    }
+    to {
+      top: 92%;
+    }
+  }
   #fondoIzquierda {
     top: 16em;
   }
@@ -11069,6 +11142,26 @@ nav a:hover {
   }
   #fondo {
     top: 116%;
+  }
+  @-webkit-keyframes mancha {
+    from {
+      left: 35%;
+      top: 50%;
+    }
+    to {
+      left: 50%;
+      top: 116%;
+    }
+  }
+  @keyframes mancha {
+    from {
+      left: 35%;
+      top: 50%;
+    }
+    to {
+      left: 50%;
+      top: 116%;
+    }
   }
   #fondoIzquierda {
     left: 0;
@@ -11113,6 +11206,26 @@ nav a:hover {
   #fondo {
     width: 100vw;
     top: 118%;
+  }
+  @-webkit-keyframes mancha {
+    from {
+      left: 35%;
+      top: 50%;
+    }
+    to {
+      left: 50%;
+      top: 118%;
+    }
+  }
+  @keyframes mancha {
+    from {
+      left: 35%;
+      top: 50%;
+    }
+    to {
+      left: 50%;
+      top: 118%;
+    }
   }
   #fondoIzquierda {
     top: 14em;
